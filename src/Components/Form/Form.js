@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { validationName } from '../service/validation';
+import { validationName } from '../../service/validation';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import s from './form.module.css';
 
-function Form({onSubmit}) {
+export default function Form({onSubmit}) {
     const [search, setSearch] = useState('');
 
     const handleOnChangeInput = event => {
@@ -49,5 +49,3 @@ function Form({onSubmit}) {
 Form.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 };
-
-export default Form;

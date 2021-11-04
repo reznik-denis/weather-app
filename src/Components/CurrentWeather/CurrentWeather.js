@@ -1,5 +1,6 @@
-import s from './CurrentWeather.module.css'
-import timeConverter from '../service/timeConverter'
+import s from './CurrentWeather.module.css';
+import PropTypes from 'prop-types';
+import timeConverter from '../../service/timeConverter';
 
 export default function CurrentWeather({ currentWeather }) {
     const { name, sys, main, wind, weather } = currentWeather;
@@ -29,4 +30,32 @@ export default function CurrentWeather({ currentWeather }) {
             </div>   
         </div>
     </div>
-}
+};
+
+CurrentWeather.propTypes = {
+    currentWeather: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        main: PropTypes.shape({
+            feels_like: PropTypes.number,
+            humidity: PropTypes.number,
+            pressure: PropTypes.number,
+            temp: PropTypes.number,
+            temp_min: PropTypes.number,
+            temp_max: PropTypes.number,
+            grnd_level: PropTypes.number,
+        }),
+        sys: PropTypes.shape({
+            sunrise: PropTypes.number,
+            sunset: PropTypes.number,
+        }),
+        wind: PropTypes.shape({
+            speed: PropTypes.number,
+            gust: PropTypes.number,
+        }),
+        weather: PropTypes.arrayOf(PropTypes.shape({
+            description: PropTypes.string,
+            main: PropTypes.string,
+            icon: PropTypes.string,
+    }))
+    })
+};

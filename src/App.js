@@ -3,10 +3,10 @@ import { ToastContainer } from 'react-toastify';
 
 import './App.css';
 
-import Form from './Components/Form/Form';
-import Section from './Components/Section/Section';
-import { validationLanguage } from './Components/service/validation'
-import fetchImages from './Components/service/fetchWeather'
+import Form from './Components/Form';
+import Section from './Components/Section';
+import { validationLanguage } from './service/validation'
+import fetchImages from './service/fetchWeather'
 import CurrentWeather from './Components/CurrentWeather'
 
 function App() {
