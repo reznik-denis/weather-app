@@ -1,8 +1,9 @@
 import s from './Section.module.css';
 
-function Section(prop) {
+function Section({ children, title}) {
     return <div>
-        <h2 className={s.title}>{prop.title}</h2>
+        <h2 className={s.title}>{title}</h2>
+        {children}
     </div>
 }
 
