@@ -34,10 +34,20 @@ function App() {
 
   return <div className="App">
     <div className="flex">
-    <Form onSubmit={onSubmitForm} />
-    <Section title="Current weather">
-      {currentWeather && <CurrentWeather currentWeather={currentWeather} />}
-    </Section>
+      {error && <h1>{error.massage}</h1>}
+      <Form onSubmit={onSubmitForm} language={language}/>
+      {language === 'en' &&
+        <Section title="Current weather">
+        {currentWeather && <CurrentWeather currentWeather={currentWeather} language={language}/>}
+        </Section>}
+      {language === 'ru' &&
+        <Section title="Текущая погода">
+          {currentWeather && <CurrentWeather currentWeather={currentWeather} language={language}/>}
+        </Section>}
+      {language === 'ua' && <Section title="Погода на сьогодні">
+        {currentWeather && <CurrentWeather currentWeather={currentWeather} language={language}/>}
+      </Section>}
+    
     </div>
     <Section title="Search History" />
     <ToastContainer

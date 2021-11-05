@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import s from './form.module.css';
 
-export default function Form({onSubmit}) {
+export default function Form({onSubmit, language}) {
     const [search, setSearch] = useState('');
 
     const handleOnChangeInput = event => {
@@ -34,7 +34,12 @@ export default function Form({onSubmit}) {
     };
 
     return <form className={s.form} onSubmit={onSubmitHandler}>
-        <label className={s.lableForm} htmlFor="city">Enter your city</label>
+        {language === 'en' &&
+        <label className={s.lableForm} htmlFor="city">Enter your city</label>}
+        {language === 'ru' &&
+        <label className={s.lableForm} htmlFor="city">Введите название города</label>}
+        {language === 'ua' &&
+            <label className={s.lableForm} htmlFor="city">Введіть назву міста</label>}
         <input
             className={s.inputLable}
             type="text"
@@ -48,4 +53,5 @@ export default function Form({onSubmit}) {
 
 Form.propTypes = {
     onSubmit: PropTypes.func.isRequired,
+    language: PropTypes.string.isRequired,
 };
