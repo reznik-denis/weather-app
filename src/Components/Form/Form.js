@@ -1,13 +1,17 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { validationName } from '../../service/validation';
-import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import s from './form.module.css';
+import { currentSearch } from '../../redux/actions'
+import {getLanguage} from '../../redux/selectors'
 
-export default function Form({onSubmit, language}) {
+export default function Form() {
     const [search, setSearch] = useState('');
-
+    const language = useSelector(getLanguage);
+    const dispatch = useDispatch();
+  
     const handleOnChangeInput = event => {
         setSearch(event.currentTarget.value.toLowerCase());
     };
@@ -18,14 +22,14 @@ export default function Form({onSubmit, language}) {
         if (search.trim() === '') {
             toast.error("Введите название города!");
             return
-        }
-        if (validationName(search)) {
+        } else if (validationName(search)) {
             toast.error("Введите коректное название города!");
             reset();
             return
-        }
+        } else {
+            dispatch(currentSearch(search))
+        };
     
-        onSubmit(search); 
         reset();
     }
 
@@ -50,8 +54,3 @@ export default function Form({onSubmit, language}) {
             autoFocus/>
     </form>
 }
-
-Form.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-    language: PropTypes.string.isRequired,
-};

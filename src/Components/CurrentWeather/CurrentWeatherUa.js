@@ -1,9 +1,10 @@
 import s from './CurrentWeather.module.css';
-import PropTypes from 'prop-types';
 import timeConverter from '../../service/timeConverter';
+import { getCurrentSerch } from '../../redux/selectors'
+import { useSelector} from 'react-redux';
 
-export default function CurrentWeatherUa ({ currentWeather }){
-    const { name, sys, main, wind, weather } = currentWeather;
+export default function CurrentWeatherUa() {
+    const { name, sys, main, wind, weather } = useSelector(getCurrentSerch);
     const icon = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
     return <div>
         <h2 className={s.title}>Погода в місті <span className={s.capitalize}>{name}</span></h2>
@@ -20,7 +21,7 @@ export default function CurrentWeatherUa ({ currentWeather }){
             <div>
                 {sys.sunrise && <p>Схід сонця - {timeConverter(sys.sunrise)}</p>}
                 {sys.sunset && <p>Захід сонця - {timeConverter(sys.sunset)}</p>}
-                {wind.speed && <p>Швидкість повітря {wind.speed} м/с</p>}
+                {(wind.speed || wind.speed === 0) && <p>Швидкість повітря {wind.speed} м/с</p>}
                 {(wind.gust || wind.gust === 0) && <p>Пориви вітру {wind.gust} м/с</p>}
                 {weather[0].description && <div className={s.flex}>
                     <p>Погодні умови </p>
@@ -31,31 +32,3 @@ export default function CurrentWeatherUa ({ currentWeather }){
         </div>
         </div>
 }
-
-CurrentWeatherUa.propTypes = {
-    currentWeather: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        main: PropTypes.shape({
-            feels_like: PropTypes.number,
-            humidity: PropTypes.number,
-            pressure: PropTypes.number,
-            temp: PropTypes.number,
-            temp_min: PropTypes.number,
-            temp_max: PropTypes.number,
-            grnd_level: PropTypes.number,
-        }),
-        sys: PropTypes.shape({
-            sunrise: PropTypes.number,
-            sunset: PropTypes.number,
-        }),
-        wind: PropTypes.shape({
-            speed: PropTypes.number,
-            gust: PropTypes.number,
-        }),
-        weather: PropTypes.arrayOf(PropTypes.shape({
-            description: PropTypes.string,
-            main: PropTypes.string,
-            icon: PropTypes.string,
-    }))
-    })
-};

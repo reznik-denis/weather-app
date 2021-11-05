@@ -1,18 +1,17 @@
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
 import CurrentWeatherEn from './CurrentWeatherEn';
 import CurrentWeatherRu from './CurrentWeatherRu';
 import CurrentWeatherUa from './CurrentWeatherUa'
+import {getLanguage} from '../../redux/selectors'
 
-export default function CurrentWeather({ currentWeather, language }) {
+export default function CurrentWeather() {
+    const language = useSelector(getLanguage);
     return <>{language === 'en' &&
-        <CurrentWeatherEn currentWeather={ currentWeather }/>}
+        <CurrentWeatherEn />}
       {language === 'ru' &&
-        <CurrentWeatherRu currentWeather={ currentWeather }/>}
+        <CurrentWeatherRu />}
         {language === 'ua' && 
-      <CurrentWeatherUa currentWeather={ currentWeather }/>}
+            <CurrentWeatherUa />}
         </>
-};
-
-CurrentWeather.propTypes = {
-    language: PropTypes.string.isRequired,
 };
