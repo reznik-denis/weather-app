@@ -65,7 +65,7 @@ export default combineReducers({
     current: searchRedusser,
     currentFetch: FetchReduccer,
     searchHistory: searchReducer,
-    weatherFiveDay: fetchAtFiveDayWeatherReduccer,
+    weatherSevenDay: fetchAtFiveDayWeatherReduccer,
     loading,
     error,
 })
