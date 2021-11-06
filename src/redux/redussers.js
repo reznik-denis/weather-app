@@ -49,9 +49,9 @@ const loading = createReducer(false, {
   [fetchSerchError]: () => false,
 });
 
-const error = createReducer(null, {
+const error = createReducer('', {
     [fetchSerchError]: (_, action) => action.payload,
-    [fetchSerchRequest]: () => null,
+    [fetchSerchRequest]: () => '',
     [fetchSearchSevenDaysAgoError]: (_, action) => action.payload,
     [fetchSearchSevenDaysAgoRequest]: () => null,
 });

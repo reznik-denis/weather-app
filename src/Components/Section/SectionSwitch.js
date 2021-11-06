@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import { getLanguage, getCurrentWeather } from '../../redux/selectors'
-import CurrentWeather from '../CurrentWeather';
+import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import Section from './Section';
 
 export default function SectionSwitch() {

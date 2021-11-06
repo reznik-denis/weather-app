@@ -3,10 +3,10 @@ import { useEffect } from 'react/cjs/react.development';
 import { ToastContainer } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Form from './Components/Form';
+import Form from './Components/Form/Form';
 import Loader from './Components/Loader/Loader';
 import SectionSwitch from './Components/Section/SectionSwitch';
-import SectinWeatherSevenDays from './Components/WeatherSevenDay/SectionSwitch';
+import SectionWeatherSevenDays from './Components/WeatherSevenDay/SectionSwitch';
 import SearchHistorySwitch from './Components/SearchHistory/SearchHistorySwitch';
 import LangButton from './Components/LangButton/LangBatton'
 import { getCurrentSearch, getLoading, getError, getCurrentWeather, getSerchHistory, getLanguage } from './redux/selectors';
@@ -23,24 +23,23 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchSearch(name, language))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, name]
-  );
+    if (name ?? language) {
+       dispatch(fetchSearch(name, language))
+    };
+  }, [dispatch, name, language]);
 
   useEffect(() => {
     if (currentFetch) {
       dispatch(fetchSearchSevenDaysAgo(currentFetch.coord.lat, currentFetch.coord.lon, language))
-    }
-  }, [dispatch, currentFetch, language]
-  );
+    };
+  }, [dispatch, currentFetch, language]);
 
   return <div className="App">
       <LangButton/>
       {error && <h1>{error}</h1>}
       <Form />
       {loader ? <Loader /> : <SectionSwitch />}
-      <SectinWeatherSevenDays/>
+      <SectionWeatherSevenDays/>
       {serchHistory && <SearchHistorySwitch />}
       <ToastContainer
             position="bottom-right"
