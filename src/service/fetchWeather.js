@@ -11,7 +11,6 @@ export default function fetchImages(name, language) {
                 return res.json();
             }
             toast.error("Город с таким именем отсутсвует");
-            return Promise.reject(new Error('Город с таким именем отсутсвует'))
+            return Promise.reject(new Error('There is no city with that name'))
         }).then(data => data);
 }
-

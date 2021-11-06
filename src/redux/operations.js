@@ -12,6 +12,6 @@ export const fetchSearch = (name) => async dispatch => {
         const search = await fetchImages(name, validationLanguage(name))
         dispatch(fetchSerchSuccess(search));
     } catch (error) {
-        dispatch(fetchSerchError(error));
+        dispatch(fetchSerchError(error.toString()));
     };
 }

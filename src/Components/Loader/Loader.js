@@ -1,15 +1,15 @@
 import { css } from '@emotion/react';
-import FadeLoader from "react-spinners/ClipLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 
-// Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
   display: block;
   margin: 0 auto;
+  border-color: red;
 `;
 
 function Loader() {
   return (
-    <FadeLoader color={'#4aabf0fd'} loading={true} css={override} size={150} />
+    <ClipLoader color={'#ffffff'} loading={true} css={override} size={150} />
   );
 }
 

@@ -12,13 +12,14 @@ const currentSearchReducer = createReducer({search: 'Киев', language: 'ru'},
     [currentSearch]: (_, action) => action.payload,
 })
 
-const searchReducer = createReducer([], {
+const searchReducer = createReducer('', {
     [fetchSerchSuccess]: (state, action) => {
         if (firstRender) {
             firstRender = false;
             return state
         }
-        return [action.payload, ...state]
+        const dateNow = new Date().getTime();
+        return [{ ...action.payload, date: dateNow }, ...state].sort((a,b) => b.date - a.date).slice(0,10)
     }
 })
 
@@ -33,7 +34,7 @@ const loading = createReducer(false, {
 });
 
 const error = createReducer(null, {
-  [fetchSerchError]: (_, action) => action.payload,
+    [fetchSerchError]: (_, action) => action.payload,
   [fetchSerchRequest]: () => null,
 });
 

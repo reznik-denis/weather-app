@@ -2,10 +2,6 @@
   text-transform: capitalize;
 }
 
-/* .title {
-  text-align: left;
-} */
-
 .icon {
   display: block;
   width: 30px;
@@ -15,7 +11,7 @@
 .box {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
   background-color: #fff;
   border: 2px solid goldenrod;

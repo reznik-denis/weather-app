@@ -1,9 +1,10 @@
+import s from './form.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { validationName } from '../../service/validation';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import s from './form.module.css';
+import { toast } from 'react-toastify';
+
+import { validationName } from '../../service/validation';
 import { currentSearch } from '../../redux/actions'
 import {getLanguage} from '../../redux/selectors'
 
