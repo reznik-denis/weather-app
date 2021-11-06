@@ -14,12 +14,12 @@ export default function SectionSwitch() {
         </Section>;
         
         case  'ru':
-        return <Section title="История поиска погоды">
+        return <Section title="История поиска">
         <SearchHistory/>
         </Section>;
         
         case  'ua':
-        return <Section title="Історія пошуку погоди">
+        return <Section title="Історія пошуку">
         <SearchHistory/>
         </Section>;
 

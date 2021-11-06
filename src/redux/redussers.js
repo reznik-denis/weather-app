@@ -6,13 +6,22 @@ import {
     fetchSerchError,
     fetchSearchSevenDaysAgoRequest,
     fetchSearchSevenDaysAgoSuccess,
-    fetchSearchSevenDaysAgoError
+    fetchSearchSevenDaysAgoError,
+    currentLanguage
 } from './actions';
 
 let firstRender = true;
 
-const currentSearchReducer = createReducer({search: 'Киев', language: 'ru'}, {
-    [currentSearch]: (_, action) => action.payload,
+const currentSearchReducer = createReducer('Киев', {
+    [currentSearch]: (state, action) => {
+        return action.payload ? action.payload : state;
+    },
+})
+
+const currentLanguageReduccer = createReducer('ru', {
+    [currentLanguage]: (state, action) => {
+        return action.payload ? action.payload : state;
+    }
 })
 
 const searchReducer = createReducer('', {
@@ -43,12 +52,17 @@ const loading = createReducer(false, {
 const error = createReducer(null, {
     [fetchSerchError]: (_, action) => action.payload,
     [fetchSerchRequest]: () => null,
-  [fetchSearchSevenDaysAgoError]: (_, action) => action.payload,
-  [fetchSearchSevenDaysAgoRequest]: () => null,
+    [fetchSearchSevenDaysAgoError]: (_, action) => action.payload,
+    [fetchSearchSevenDaysAgoRequest]: () => null,
 });
 
+const searchRedusser = combineReducers({
+    search: currentSearchReducer,
+    language: currentLanguageReduccer
+})
+
 export default combineReducers({
-    current: currentSearchReducer,
+    current: searchRedusser,
     currentFetch: FetchReduccer,
     searchHistory: searchReducer,
     weatherFiveDay: fetchAtFiveDayWeatherReduccer,

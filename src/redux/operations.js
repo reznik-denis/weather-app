@@ -7,12 +7,11 @@ import {
     fetchSearchSevenDaysAgoError
 } from './actions';
 import { fetchWeather, fetchWeatherSevenDaysAgo } from '../service/fetchWeather'
-import { validationLanguage } from '../service/validation'
 
-export const fetchSearch = (name) => async dispatch => {
+export const fetchSearch = (name, language) => async dispatch => {
     dispatch(fetchSerchRequest());
     try {
-        const search = await fetchWeather(name, validationLanguage(name))
+        const search = await fetchWeather(name, language)
         dispatch(fetchSerchSuccess(search));
     } catch (error) {
         dispatch(fetchSerchError(error.toString()));

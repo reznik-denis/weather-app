@@ -8,6 +8,7 @@ import Loader from './Components/Loader/Loader';
 import SectionSwitch from './Components/Section/SectionSwitch';
 import SectinWeatherSevenDays from './Components/WeatherSevenDay/SectionSwitch';
 import SearchHistorySwitch from './Components/SearchHistory/SearchHistorySwitch';
+import LangButton from './Components/LangButton/LangBatton'
 import { getCurrentSearch, getLoading, getError, getCurrentWeather, getSerchHistory, getLanguage } from './redux/selectors';
 import { fetchSearch, fetchSearchSevenDaysAgo } from './redux/operations';
 
@@ -22,7 +23,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchSearch(name))
+    dispatch(fetchSearch(name, language))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, name]
   );
 
@@ -34,10 +36,11 @@ function App() {
   );
 
   return <div className="App">
+      <LangButton/>
       {error && <h1>{error}</h1>}
       <Form />
-    {loader ? <Loader /> : <SectionSwitch />}
-    <SectinWeatherSevenDays/>
+      {loader ? <Loader /> : <SectionSwitch />}
+      <SectinWeatherSevenDays/>
       {serchHistory && <SearchHistorySwitch />}
       <ToastContainer
             position="bottom-right"
