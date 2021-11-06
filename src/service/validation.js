@@ -4,9 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 export function validationLanguage(search) {
     const val = search.replace(/\s/g, '');
     const validation = {
-            en: validator.isAlpha(val),
-            ua: validator.isAlpha(val, 'uk-UA'),
-            ru: validator.isAlpha(val, 'ru-RU')
+             en: validator.isAlpha(val,'en-US', {ignore: '-'}),
+            ua: validator.isAlpha(val, 'uk-UA',{ignore: '-'}),
+            ru: validator.isAlpha(val, 'ru-RU',{ignore: '-'})
     };
     if (validation.en) {
         return 'en';
@@ -20,9 +20,9 @@ export function validationLanguage(search) {
 export function validationName(search) {
     const val = search.replace(/\s/g, '');
     const validation = {
-            en: validator.isAlpha(val),
-            ua: validator.isAlpha(val, 'uk-UA'),
-            ru: validator.isAlpha(val, 'ru-RU')
+            en: validator.isAlpha(val,'en-US', {ignore: '-'}),
+            ua: validator.isAlpha(val, 'uk-UA',{ignore: '-'}),
+            ru: validator.isAlpha(val, 'ru-RU',{ignore: '-'})
         };
     
         return (validation.en === false

@@ -13,9 +13,9 @@ export default function CurrentWeatherEn() {
                 {main.feels_like && <p>Feels like {main.feels_like}C </p>}
                 {main.humidity && <p>Humidity {main.humidity}%</p>}
                 {main.pressure && <p>Atmospheric pressure {main.pressure}hPa</p>}
-                {main.temp && <p>Temperature at the moment {main.temp}С</p>}
-                {main.temp_min && <p>Minimum temperature at the moment {main.temp_min}С</p>}
-                {main.temp_max && <p>Maximum temperature at the moment {main.temp_max}С</p>}
+                {main.temp && <p>Temperature at the moment {main.temp > 0 ? `+${main.temp}` : main.temp}С</p>}
+                {main.temp_min && <p>Minimum temperature at the moment {main.temp_min > 0 ? `+${main.temp_min}` : main.temp_min}С</p>}
+                {main.temp_max && <p>Maximum temperature at the moment {main.temp_max > 0 ? `+${main.temp_max}` : main.temp_max}С</p>}
                 {main.grnd_level && <p>Atmospheric pressure on the ground level {main.grnd_level}hPa</p>}
             </div>
             <div>

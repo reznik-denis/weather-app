@@ -16,5 +16,23 @@
   border-radius: 8px;
   border: 2px solid goldenrod;
   font-size: 20px;
+}
+
+.button {
+  display: block;
+  border: none;
+  font-size: 30px;
+  font-weight: 700;
+  background-color: goldenrod;
+  border-radius: 10px;
+  padding: 17px 25px 16px 25px;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 50px;
 }

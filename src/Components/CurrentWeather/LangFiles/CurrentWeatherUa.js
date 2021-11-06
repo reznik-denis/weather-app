@@ -13,9 +13,9 @@ export default function CurrentWeatherUa() {
                 {main.feels_like && <p>Відчувається як {main.feels_like}C </p>}
                 {main.humidity && <p>Вологість {main.humidity}%</p>}
                 {main.pressure && <p>Атмосферний тиск {main.pressure}hPa</p>}
-                {main.temp && <p>Температура в даний момент {main.temp}С</p>}
-                {main.temp_min && <p>Мінімально можлива темература {main.temp_min}С</p>}
-                {main.temp_max && <p>Максимально можлива температура {main.temp_max}С</p>}
+                {main.temp && <p>Температура в даний момент {main.temp > 0 ? `+${main.temp}` : main.temp}С</p>}
+                {main.temp_min && <p>Мінімально можлива темература {main.temp_min > 0 ? `+${main.temp_min}` : main.temp_min}С</p>}
+                {main.temp_max && <p>Максимально можлива температура {main.temp_max > 0 ? `+${main.temp_max}` : main.temp_max}С</p>}
                 {main.grnd_level && <p>Атмосферний тиск на рівні землі {main.grnd_level}hPa</p>}
             </div>
             <div>

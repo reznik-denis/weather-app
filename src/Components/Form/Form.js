@@ -45,13 +45,21 @@ export default function Form() {
         <label className={s.lableForm} htmlFor="city">Введите название города</label>}
         {language === 'ua' &&
             <label className={s.lableForm} htmlFor="city">Введіть назву міста</label>}
-        <input
+        <div className={s.flex}>
+            <input
             className={s.inputLable}
             type="text"
             id="city"
             value={search}
             onChange={handleOnChangeInput}
             autoComplete="off"
-            autoFocus/>
+            autoFocus />
+        {language === 'en' &&
+        <button className={s.button} type='submit'>Search</button>}
+        {language === 'ru' &&
+        <button className={s.button} type='submit'>Поиск</button>}
+        {language === 'ua' &&
+        <button className={s.button} type='submit'>Пошук</button>}
+        </div>
     </form>
 }
