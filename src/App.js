@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 

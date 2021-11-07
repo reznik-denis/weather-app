@@ -5,7 +5,7 @@ import { useSelector} from 'react-redux';
 
 export default function CurrentWeatherUa() {
     const { name, sys, main, wind, weather } = useSelector(getCurrentWeather);
-    const icon = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
+    const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
     return <div>
         <h2 className={s.title}>Погода в місті <span className={s.capitalize}>{name}</span></h2>
         <div className={s.box}>

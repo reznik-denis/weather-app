@@ -5,7 +5,7 @@ import {unixDayUa} from '../../../service/dayConverter'
 export default function WeatherItemUa({ state }) {
     const { dt, weather, temp } = state;
     const dayOfWeek = unixDayUa(dt);
-    const icon = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
+    const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
     return <div><h3>{dayOfWeek}</h3>
                 {temp.day && <p className={s.temp}>{temp.day > 0 ? `+${Math.round(temp.day)}` : Math.round(temp.day)}</p>}
                 {weather[0].description && <div className={s.flex}>
