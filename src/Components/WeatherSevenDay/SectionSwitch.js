@@ -10,17 +10,17 @@ export default function SectionSwitch() {
    
     switch (language) {
         case 'en':
-        return <Section title="Weather at 7 days ado">
+        return <Section title="Weather forecast at 7 days">
            {state && <WeatherList/>}
         </Section>;
         
         case  'ru':
-        return <Section title="Погода за предыдущие 7 дней">
+        return <Section title="Прогноз погоды на 7 дней">
         {state && <WeatherList/>}
         </Section>;
         
         case  'ua':
-        return <Section title="Погода за попередні 7 днів">
+        return <Section title="Прогноз погоди на 7 днів">
         {state && <WeatherList/>}
         </Section>;
 
